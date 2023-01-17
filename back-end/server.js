@@ -40,6 +40,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     res.send(JSON.stringify({"Hello": "Hello World"}));
   });
 
+  /* Login And Sign Up*/
   app.post('/sign_up', (req, res) => {
     const userCollection = db.collection('user');
     req.body.password = hash256(req.body.password); //hash the password
@@ -73,11 +74,19 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         res.send(JSON.stringify({"status": "200",
                 "token": hash256(dateNow + dateExpire), "exp": dateExpire.toLocaleDateString('en-CA')}));
       }).catch(error1 => {
-
+        console.error(error1);
       });
     }).catch(error => {
       console.error(error);
     });
+  });
+
+  /* Repairs with advancement */
+  app.get('/repairs_and_advancement', (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.send(JSON.stringify({ "status": "200",
+            "carId": req.body.idCar }));
   });
 
   app.listen(3000, () => {
