@@ -1,3 +1,13 @@
 preparation/template/front-end/assets
 back-end/node_modules
 front-end/front-end-garage/node_modules
+front-end/front-end-garage/src/app/components/sidebar/sidebar.component.html
+front-end/front-end-garage/src/app/components/sidebar/sidebar.component.spec.ts
+front-end/front-end-garage/src/app/dashboard/dashboard.component.html
+front-end/front-end-garage/src/app/dashboard/dashboard.component.css
+front-end/front-end-garage/src/app/components/sidebar/sidebar.component.ts
+front-end/front-end-garage/src/app/dashboard/dashboard.component.spec.ts
+front-end/front-end-garage/src/app/dashboard/dashboard.component.ts
+front-end/front-end-garage/src/app/icons/icons.component.css
+front-end/front-end-garage/src/app/icons/icons.component.html
+front-end/front-end-garage/src/app/icons/icons.component.spec.ts
