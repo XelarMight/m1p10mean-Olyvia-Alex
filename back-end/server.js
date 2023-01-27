@@ -89,6 +89,23 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             "carId": req.body.idCar }));
   });
 
+  /*ajout d'un depot de voiture  */
+
+  app.post('/depotVoiture', (res, req) =>
+  {
+    try
+    { 
+      let carClient = new ClientCars(req.body.make, req.body.model, req.body.year, req.body.registration, req.body.type);
+      let carCollection = db.collection('car');
+      let result = carCollection.insertOne(carClient);
+      res.status(200).json(result);
+    } catch (error){
+      console.log(error);
+      res.status(500).json(error);
+    }
+    
+  })
+
   app.listen(3000, () => {
     console.log('Server Started at 3000');
   });

@@ -18,4 +18,5 @@ class ClientCars {
   static getAllCars(dbCollection){
 
   }
+  exports.car = ClientCars;
 }
