@@ -1,0 +1,39 @@
+<app-header-home></app-header-home>
+
+<div class="index-container" align="center">
+  <div class="place-select">
+    <span class="place-item" *ngFor="let place of myData">Nb: {{ place+1 }}</span>
+  </div>
+
+  <div class="main-content">
+    <div class="list-repairs">
+      <div class="list-group">
+        <h3>List Of Repairs</h3>
+        <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+        <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+        <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+        <button type="button" class="list-group-item list-group-item-action">Vestibulum at eros</button>
+      </div>
+    </div>
+
+    <div class="repair-grp">
+      <div class="repair-info">
+        <div class="repair-info-cont">
+          <p>Repair Name: </p>
+          <p>Cost: </p>
+          <p>Duration: </p>
+        </div>
+        <div class="repair-info-cont">
+          <p>Total Cost: {{ totalCost }}ar</p>
+          <hr>
+          <p>Percentage Done: {{ percentageDone }} <br>
+            <progress value="{{ percentageDone }}" max="100">{{ percentageDone }}%</progress>
+          </p>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer-home></app-footer-home>
