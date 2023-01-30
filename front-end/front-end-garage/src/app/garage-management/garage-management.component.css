@@ -1,0 +1,74 @@
+.index-container{
+  margin-top: 30px;
+}
+
+.place-select{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 2px gray inset;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.place-item{
+  width: 60px;
+  height: 60px;
+  background-color: cyan;
+  border: 2px lightgray groove;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.place-item:hover{
+  background-color: red;
+}
+
+.main-content{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list-repairs{
+  margin-top: 40px;
+  margin-right: 80px;
+  width: 45%;
+  border: 2px black groove;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.repair-grp{
+  margin-top: 40px; /*same as the repair list*/
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
+.repair-info{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.repair-info-cont{
+  color: #495057;
+  width: auto;
+  border: 2px black groove;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.custom-progress{
+  color: green;
+}
+
+h3{
+  margin-bottom: 40px;
+}

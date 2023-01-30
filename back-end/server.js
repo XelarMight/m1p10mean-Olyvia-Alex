@@ -4,13 +4,15 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const crypto = require('crypto');
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
 const dbConfig = require('./database-cfg');
 const tableName = dbConfig.table;
 
-const connectionString = 'mongodb://127.0.0.1:27017/tom:azerty123456';
+//const connectionString = 'mongodb://127.0.0.1:27017/tom:azerty123456';
+const connectionString = 'mongodb+srv://repairadmin:tOUu5VAfUfRnF7ZJ@cluster0.eeaglqg.mongodb.net/?retryWrites=true&w=majority';
 const databaseName = 'examen_duo_mean';
+const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 /* Customised Class */
 /*
@@ -19,13 +21,13 @@ const userClient = require('./classes/UserClient');
 console.log(new userClient.user(1, 1, 1));
 */
 
+/*
 MongoClient.connect(connectionString, (err, client) =>{
   if (err) return console.error(err);
   console.log('Connected To Database');
-});
+});*/
 
-MongoClient.connect(connectionString, { useUnifiedTopology: true })
-.then(client => {
+client.connect(err => {
   console.log('Connected To Database');
 
   const db = client.db(databaseName);
@@ -72,7 +74,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         res.setHeader("Content-Type", "application/json");
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.send(JSON.stringify({"status": "200",
-                "token": hash256(dateNow + dateExpire), "exp": dateExpire.toLocaleDateString('en-CA')}));
+        "token": hash256(dateNow + dateExpire), "exp": dateExpire.toLocaleDateString('en-CA')}));
       }).catch(error1 => {
         console.error(error1);
       });
@@ -86,15 +88,15 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     res.setHeader("Content-Type", "application/json");
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.send(JSON.stringify({ "status": "200",
-            "carId": req.body.idCar }));
+    "carId": req.body.idCar }));
   });
 
-  /*ajout d'un depot de voiture  */
+  /* ajout d'un depot de voiture  */
 
   app.post('/depotVoiture', (res, req) =>
   {
     try
-    { 
+    {
       let carClient = new ClientCars(req.body.make, req.body.model, req.body.year, req.body.registration, req.body.type);
       let carCollection = db.collection('car');
       let result = carCollection.insertOne(carClient);
@@ -103,16 +105,20 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       console.log(error);
       res.status(500).json(error);
     }
-    
+
   })
 
   app.listen(3000, () => {
     console.log('Server Started at 3000');
   });
 
+});
+/*
+.then(client => {
+
 }).catch(error => {
   error => console.error(error);
-});
+});*/
 
 //hash
 function hash256(input){
