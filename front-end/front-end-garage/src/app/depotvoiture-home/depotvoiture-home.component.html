@@ -1,1 +1,39 @@
-<p>depotvoiture-home works!</p>
+<app-header-home></app-header-home>
+
+
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 mb-2">
+                <div class="d-flex align-items-center bg-light p-4 mb-4" style="height: 450px;">
+                    <h2>Depot de voiture</h2>
+                    <form [formGroup]="depotVoitureForm" (ngSubmit)="onSubmit()">
+                        <label>
+                            Fabrication:
+                            <input type="text" formControlName="fabrication">
+                        </label>
+                        <label>
+                            Modele:
+                            <input type="text" formControlName="modele">
+                        </label>
+                        <label>
+                            Année:
+                            <input type="text" formControlName="annee">
+                        </label>
+                        <label>
+                            Registration:
+                            <input type="text" formControlName="registration">
+                        </label>
+                        <label>
+                        Type:
+                            <input type="text" formControlName="type">
+                        </label>
+                        <div class="form-row"><button type="submit" [disabled]="!depotVoitureForm.valid" class="btn btn-primary">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<app-footer-home></app-footer-home>

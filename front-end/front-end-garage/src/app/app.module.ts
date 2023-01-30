@@ -11,6 +11,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
 import { FooterHomeComponent } from './footer-home/footer-home.component';
 import { DepotvoitureHomeComponent } from './depotvoiture-home/depotvoiture-home.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DepotvoitureHomeComponent } from './depotvoiture-home/depotvoiture-home
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
