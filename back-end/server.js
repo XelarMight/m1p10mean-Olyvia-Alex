@@ -91,7 +91,7 @@ client.connect(err => {
     "carId": req.body.idCar }));
   });
 
-  /*ajout d'un depot de voiture  */
+  /* ajout d'un depot de voiture  */
 
   app.post('/depotVoiture', (res, req) =>
   {
