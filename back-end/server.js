@@ -2,6 +2,8 @@
 
 /* Constant and configs import */
 const express = require('express');
+const url = require('url');
+const queryString = require('querystring');
 const bodyParser = require('body-parser')
 const crypto = require('crypto');
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -28,7 +30,7 @@ MongoClient.connect(connectionString, (err, client) =>{
   console.log('Connected To Database');
 });*/
 
-client.connect(err => {
+//client.connect(err => {
   console.log('Connected To Database');
 
   const db = client.db(databaseName);
@@ -85,26 +87,32 @@ client.connect(err => {
   });
 
   /* Repairs with advancement */
-  app.get('/repairs_and_advancement', (req, res) => {
+  app.get('/repairs_and_advancement/:carId', (req, res) => {
+    //*
     //base access
-    const carAccess = db.collection('repairs');
-    carAccess.find({ "car": req.body.carId }).toArray((err, result) => {
-      if(err){
-        console.log(err);
-        //response
-        res.setHeader("Content-Type", "application/json");
-        res.setHeader("Access-Control-Allow-Origin", "*");
-        res.send(JSON.stringify({ "status": "404",
-        "message": "Not found",
-        "carId": req.body.carId }));
-      };
-      console.log("found it");
-      //response
-      res.setHeader("Content-Type", "application/json");
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      res.send(JSON.stringify({ "status": "200",
-      "message": "Found",
-      "carId": req.body.carId }));
+    const client1 = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+    client1.connect(err => {
+      console.log("tafiditra: "+err);
+      const db1 = client1.db(databaseName);
+      const carAccess = db1.collection('repairs');
+      carAccess.find({ "car": req.params.carId }).toArray()
+        .then(results => {
+          const allCarAccess = db1.collection('cars');
+          allCarAccess.findOne({"_id": req.params.carId})
+            .then(result1 => {
+              //response
+              res.setHeader("Content-Type", "application/json");
+              res.setHeader("Access-Control-Allow-Origin", "*");
+              res.send(JSON.stringify({ "status": "200",
+              "message": "Found",
+              "carId": req.params.carId, "car": result1, "result": results }));
+              client1.close();
+            });
+        })
+        .catch(error => {
+          console.error(error);
+          client1.close();
+        });
     });
   });
 
@@ -129,7 +137,7 @@ client.connect(err => {
     console.log('Server Started at 3000');
   });
 
-});
+//});
 /*
 .then(client => {
 

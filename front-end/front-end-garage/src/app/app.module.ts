@@ -31,7 +31,7 @@ import { GarageManagementComponent } from './garage-management/garage-management
     SignUpComponent,
     CarouselHomeComponent,
     FooterHomeComponent,
-    DepotvoitureHomeComponent
+    DepotvoitureHomeComponent,
     ClientRepairComponent,
     ClientHistoComponent,
     SearchCarComponent,
@@ -41,7 +41,7 @@ import { GarageManagementComponent } from './garage-management/garage-management
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     HttpClientModule,
     AgGridModule,
     DragDropModule

@@ -1,7 +1,7 @@
 //user
 
 {
-  "_id": ObjectId('63d75e7bd934125ff21b587d'),
+  "_id": "63d75e7bd934125ff21b587d",
   "name": "Joestar",
   "firstname": "Jonathan",
   "email": "joe@example.com",
@@ -13,7 +13,7 @@
 //cars
 
 {
-  "_id": ObjectId('63d761dbd934125ff21bd3af'),
+  "_id": "63d7c2d5d934125ff22a50fc",
   "make": "Renault",
   "model": "Renault Kangoo 2",
   "year": "2007",
@@ -22,7 +22,7 @@
 }
 
 {
-  "_id": ObjectId('63d76288d934125ff21beb3c'),
+  "_id":"63d7c2ecd934125ff22a54a2",
   "make": "Audi",
   "model": "Audi A3",
   "year": "1996",
@@ -33,28 +33,28 @@
 //repairs
 
 {
-  "_id": ObjectId('63d76771d934125ff21c9d04'),
+  "_id": "63d76771d934125ff21c9d04",
   "repair_name": "Air filter replacement",
   "cost": 100000,
   "duration": 4,
   "advancement": 64,
-  "car": "63d761dbd934125ff21bd3af"
+  "car": "63d75e7bd934125ff21b587d"
 }
 
 {
-  "_id": ObjectId('63d7679ed934125ff21ca382'),
+  "_id": "63d7679ed934125ff21ca382",
   "repair_name": "Battery replacement",
   "cost": 30000,
   "duration": 2,
   "advancement": 35,
-  "car": "63d761dbd934125ff21bd3af"
+  "car": "63d75e7bd934125ff21b587d"
 }
 
 {
-  "_id": ObjectId('63d767d5d934125ff21cabcf'),
+  "_id": "63d767d5d934125ff21cabcf",
   "repair_name": "Spark plug replacement",
   "cost": 35000,
   "duration": 2,
   "advancement": 45,
-  "car": "63d761dbd934125ff21bd3af"
+  "car": "63d75e7bd934125ff21b587d"
 }
