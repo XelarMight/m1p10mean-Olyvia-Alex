@@ -21,4 +21,9 @@ export class AllqueryService {
     //return this.http.get(this.baseUrl+"/repairs_and_advancement?firstname="+username+"&email="+email+"&carId="+carId);
     return this.http.get(this.baseUrl+"/repairs_and_advancement/"+carId);
   }
+
+  getAllRepairHisto(username: string, email: string, carId: string){
+    //return this.http.get(this.baseUrl+"/repairs_and_advancement?firstname="+username+"&email="+email+"&carId="+carId);
+    return this.http.get(this.baseUrl+"/repairs_and_advancement/"+carId);
+  }
 }

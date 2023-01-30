@@ -6,3 +6,7 @@ table{
 td{
   color: lighter(black);
 }
+
+.messages{
+  margin-top: 40px;
+}

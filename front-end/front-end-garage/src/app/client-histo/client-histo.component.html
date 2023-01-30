@@ -3,26 +3,13 @@
 <app-search-car></app-search-car>
 
 <div class="">
+  <div class="messages" *ngIf="allRepairList == 0" align="center">
+    <b>No Repairs Done yet</b>
+  </div>
   <table border="1" align="center" width="65%">
-    <tr>
-      <th>Repair Name</th>
-      <th>Cost</th>
-      <th>Duration</th>
-    </tr>
-    <tr>
-      <td>Motor</td>
-      <td>159$</td>
-      <td>3d</td>
-    </tr>
-    <tr>
-      <td>Pipe</td>
-      <td>50$</td>
-      <td>2d</td>
-    </tr>
-    <tr>
-      <td>Tire Support</td>
-      <td>75$</td>
-      <td>4d</td>
+    <tr *ngFor="let rep of allRepairList">
+      <th>{{ rep.repair_name }}</th>
+      <th>{{ rep.cost }}</th>
     </tr>
   </table>
 </div>

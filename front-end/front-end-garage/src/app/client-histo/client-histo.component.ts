@@ -9,7 +9,7 @@ import { AllqueryService } from '../services/allquery.service';
 
 export class ClientHistoComponent implements OnInit {
 
-  allRepairList = [];
+  allRepairList: any = [];
 
   constructor(private query: AllqueryService){
 
@@ -20,9 +20,12 @@ export class ClientHistoComponent implements OnInit {
   }
 
   selectAllRepair(): void{
-    this.query.getAllRepairAndAdvancement('Jonathan', 'joe@example.com', '63d761dbd934125ff21bd3af')
-    .subscribe(data => {
+    this.query.getAllRepairHisto('Jonathan', 'joe@example.com', '63d761dbd934125ff21bd3af')
+    .subscribe((data: any) => {
       console.log(data);
+      data.result.forEach((element: any) => {
+        this.allRepairList.push(element);
+      });
     });
   }
 }

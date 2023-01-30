@@ -86,6 +86,36 @@ MongoClient.connect(connectionString, (err, client) =>{
     });
   });
 
+  /* Histo Repairs */
+  app.get('/histo-repairs/:carId', (req, res) => {
+    //*
+    //base access
+    const client1 = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+    client1.connect(err => {
+      console.log("tafiditra: "+err);
+      const db1 = client1.db(databaseName);
+      const carAccess = db1.collection('repairs');
+      carAccess.find({ "car": req.params.carId, "advancement": 100 }).toArray()
+        .then(results => {
+          const allCarAccess = db1.collection('cars');
+          allCarAccess.findOne({"_id": req.params.carId})
+            .then(result1 => {
+              //response
+              res.setHeader("Content-Type", "application/json");
+              res.setHeader("Access-Control-Allow-Origin", "*");
+              res.send(JSON.stringify({ "status": "200",
+              "message": "Found",
+              "carId": req.params.carId, "car": result1, "result": results }));
+              client1.close();
+            });
+        })
+        .catch(error => {
+          console.error(error);
+          client1.close();
+        });
+    });
+  });
+
   /* Repairs with advancement */
   app.get('/repairs_and_advancement/:carId', (req, res) => {
     //*
