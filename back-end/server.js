@@ -14,6 +14,7 @@ const connectionString = 'mongodb+srv://repairadmin:tOUu5VAfUfRnF7ZJ@cluster0.ee
 const databaseName = 'examen_duo_mean';
 const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
+const dbEasyAccess = require('./classes/BasicCrud').basicCrud;
 /* Customised Class */
 /*
 const userClient = require('./classes/UserClient');
@@ -85,10 +86,26 @@ client.connect(err => {
 
   /* Repairs with advancement */
   app.get('/repairs_and_advancement', (req, res) => {
-    res.setHeader("Content-Type", "application/json");
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.send(JSON.stringify({ "status": "200",
-    "carId": req.body.idCar }));
+    //base access
+    const carAccess = db.collection('repairs');
+    carAccess.find({ "car": req.body.carId }).toArray((err, result) => {
+      if(err){
+        console.log(err);
+        //response
+        res.setHeader("Content-Type", "application/json");
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.send(JSON.stringify({ "status": "404",
+        "message": "Not found",
+        "carId": req.body.carId }));
+      };
+      console.log("found it");
+      //response
+      res.setHeader("Content-Type", "application/json");
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.send(JSON.stringify({ "status": "200",
+      "message": "Found",
+      "carId": req.body.carId }));
+    });
   });
 
   /* ajout d'un depot de voiture  */
