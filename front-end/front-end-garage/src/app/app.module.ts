@@ -11,11 +11,12 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
 import { FooterHomeComponent } from './footer-home/footer-home.component';
+import { DepotvoitureHomeComponent } from './depotvoiture-home/depotvoiture-home.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ClientRepairComponent } from './client-repair/client-repair.component';
 import { ClientHistoComponent } from './client-histo/client-histo.component';
 import { SearchCarComponent } from './search-car/search-car.component';
 import { CarToGarageComponent } from './car-to-garage/car-to-garage.component';
-
 import { AgGridModule } from 'ag-grid-angular';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { GarageManagementComponent } from './garage-management/garage-management.component';
@@ -30,6 +31,7 @@ import { GarageManagementComponent } from './garage-management/garage-management
     SignUpComponent,
     CarouselHomeComponent,
     FooterHomeComponent,
+    DepotvoitureHomeComponent
     ClientRepairComponent,
     ClientHistoComponent,
     SearchCarComponent,
@@ -39,6 +41,7 @@ import { GarageManagementComponent } from './garage-management/garage-management
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule
     HttpClientModule,
     AgGridModule,
     DragDropModule

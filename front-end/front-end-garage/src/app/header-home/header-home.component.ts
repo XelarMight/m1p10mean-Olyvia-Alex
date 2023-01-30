@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component , OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-header-home',
@@ -6,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-home.component.css']
 })
 export class HeaderHomeComponent implements OnInit {
+
+  logo: string = "assets/template-assets/img/logo.png";
+
+
 
   mainLink: string = "localhost:4200/";
   
