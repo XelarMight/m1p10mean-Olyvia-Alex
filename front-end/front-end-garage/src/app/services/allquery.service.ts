@@ -35,4 +35,17 @@ export class AllqueryService {
     const body = { "carUp": listOfCars };
     return this.http.post(this.baseUrl+"/car-to-garage", body, {headers : new HttpHeaders({ 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'})});
   }
+
+  getAverageTimeRepair(){
+    return this.http.get(this.baseUrl+"/average-repair-time");
+  }
+
+  getBuySellPerMonth(dayOrMonth: string){
+    return this.http.get(this.baseUrl+"/turnover/"+dayOrMonth);
+  }
+
+  getProfits(profits: any, salary: any, rent: any,
+        purchase: any, expense: any){
+    return this.http.get(this.baseUrl+"/profit/"+salary+"/"+rent+"/"+purchase+"/"+expense);
+  }
 }

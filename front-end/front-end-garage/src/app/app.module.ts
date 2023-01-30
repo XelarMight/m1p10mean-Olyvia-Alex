@@ -21,6 +21,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { GarageManagementComponent } from './garage-management/garage-management.component';
 import { SimpleChartComponent } from './simple-chart/simple-chart.component';
+//import { StatGeneralComponent } from './stat-general/stat-general.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { SimpleChartComponent } from './simple-chart/simple-chart.component';
     SearchCarComponent,
     CarToGarageComponent,
     GarageManagementComponent,
-    SimpleChartComponent
+    SimpleChartComponent,
+    //StatGeneralComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,7 @@ import { SimpleChartComponent } from './simple-chart/simple-chart.component';
     DragDropModule
   ],
   providers: [
-    
+
   ],
   bootstrap: [AppComponent]
 })

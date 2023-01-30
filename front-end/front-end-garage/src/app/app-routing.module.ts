@@ -8,6 +8,8 @@ import { ClientRepairComponent } from './client-repair/client-repair.component';
 import { ClientHistoComponent } from './client-histo/client-histo.component';
 import { CarToGarageComponent } from './car-to-garage/car-to-garage.component';
 import { GarageManagementComponent } from './garage-management/garage-management.component';
+import { SimpleChartComponent } from './simple-chart/simple-chart.component';
+//import { StatGeneralComponent } from './stat-general/stat-general.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'repair-histo', component: ClientHistoComponent},
   { path: 'car-to-garage', component: CarToGarageComponent},
   { path: 'garage-management', component: GarageManagementComponent},
+  { path: 'simple-chart', component: SimpleChartComponent},
+  //{ path: 'stat-general', component: StatGeneralComponent},
 ];
 
 @NgModule({
