@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
 import { FooterHomeComponent } from './footer-home/footer-home.component';
+import { DepotvoitureHomeComponent } from './depotvoiture-home/depotvoiture-home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterHomeComponent } from './footer-home/footer-home.component';
     LoginComponent,
     SignUpComponent,
     CarouselHomeComponent,
-    FooterHomeComponent
+    FooterHomeComponent,
+    DepotvoitureHomeComponent
   ],
   imports: [
     BrowserModule,
