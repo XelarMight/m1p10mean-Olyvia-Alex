@@ -1,0 +1,23 @@
+<app-header-home></app-header-home>
+
+<div class="myContainers" align="center">
+  <div class="table-info">
+    <h3>Car Information</h3><br>
+    <p>Registration: {{ carInfo.registration }} </p>
+    <p>Make: {{ carInfo.make }}</p>
+    <p>Model: {{ carInfo.model }} </p>
+    <p>Year: {{ carInfo.year }} </p>
+    <p>Is Hybrid : N-A </p>
+    <hr>
+  </div>
+  <div class="table-info">
+    <h3>List Of Repairs</h3> <br><hr>
+    <div class="repair-el" *ngFor="let rep of allRepairList">
+      {{ rep.repair_name }} <br>
+      <progress value="{{ rep.advancement }}" max="100">{{ rep.advancement }}</progress>
+    </div>
+    <p class="sum">Total Percent: {{ totalPercent }}%</p>
+  </div>
+</div>
+
+<app-footer-home></app-footer-home>
