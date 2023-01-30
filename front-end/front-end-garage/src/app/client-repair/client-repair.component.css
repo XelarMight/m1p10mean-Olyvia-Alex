@@ -1,0 +1,28 @@
+.myContainers{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 30px;
+}
+
+.table-info{
+  width: 25%;
+  border: 1px grey outset;
+  color: black;
+  background: white;
+  box-shadow: 2px 2px 5px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+}
+
+.repair-el{
+  text-align: left;
+  border-bottom: 1px gray dotted;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.sum{
+  margin-top: 20px;
+}
