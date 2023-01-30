@@ -26,4 +26,13 @@ export class AllqueryService {
     //return this.http.get(this.baseUrl+"/repairs_and_advancement?firstname="+username+"&email="+email+"&carId="+carId);
     return this.http.get(this.baseUrl+"/repairs_and_advancement/"+carId);
   }
+
+  getCarToGarage(){
+    return this.http.get(this.baseUrl+"/car-to-garage");
+  }
+
+  updateCarOngoing(listOfCars: any[]){
+    const body = { "carUp": listOfCars };
+    return this.http.post(this.baseUrl+"/car-to-garage", body, {headers : new HttpHeaders({ 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'})});
+  }
 }

@@ -11,7 +11,17 @@
       [cdkDropListConnectedTo]="[doneList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>
+        <div class="">
+          Make: {{item.make}}
+        </div>
+        <div class="">
+          Model: {{item.model}}
+        </div>
+        <div class="">
+          Year: {{item.year}}
+        </div>
+      </div>
     </div>
   </div>
 
@@ -25,10 +35,25 @@
       [cdkDropListConnectedTo]="[todoList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done">{{item}}</div>
+      <div class="example-box" *ngFor="let item of done">
+        <div class="">
+          Make: {{item.make}}
+        </div>
+        <div class="">
+          Model: {{item.model}}
+        </div>
+        <div class="">
+          Year: {{item.year}}
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- Start confirm -->
+  <div class="">
+    <button class="btn btn-primary" (click)="confirmManagement()" type="button" name="button">Confirm</button>
+  </div>
+  <!-- End confirm -->
 </div>
 
 <app-footer-home></app-footer-home>

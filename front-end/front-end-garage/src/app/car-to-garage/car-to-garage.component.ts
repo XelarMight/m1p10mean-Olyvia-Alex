@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AllqueryService } from '../services/allquery.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
@@ -6,23 +7,63 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   templateUrl: './car-to-garage.component.html',
   styleUrls: ['./car-to-garage.component.css']
 })
-export class CarToGarageComponent {
+export class CarToGarageComponent implements OnInit {
 
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+  capacity: number = 5;
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  todo: any[] = [];
+
+  done: any[] = [];
+
+  constructor(private query: AllqueryService){
+
+  }
+
+  ngOnInit() :void{
+    this.getAllCarManagement();
+  }
+
+  getAllCarManagement() :void{
+    this.query.getCarToGarage().subscribe((data: any) => {
+      console.log(data);
+      data.waiting.forEach((element: any) => {
+        this.todo.push(element);
+      });
+      data.ongoing.forEach((element: any) => {
+        this.done.push(element);
+      });
+    });
+  }
+
+  confirmManagement(): void{
+    this.query.updateCarOngoing(this.done)
+    .subscribe(
+        val => {
+            console.log("PUT call successful value returned in body",
+                        val);
+        },
+        response => {
+            console.log("PUT call in error", response);
+        },
+        () => {
+            console.log("The PUT observable is now completed.");
+        }
+    );
+  }
 
   //
   drop(event: CdkDragDrop<string[]>) {
-      if (event.previousContainer === event.container) {
-        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      } else {
-        transferArrayItem(
-          event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex,
-        );
+      if(this.capacity > this.done.length+1){
+        if (event.previousContainer === event.container) {
+            moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        } else {
+          transferArrayItem(
+            event.previousContainer.data,
+            event.container.data,
+            event.previousIndex,
+            event.currentIndex,
+          );
+        }
       }
     }
   //
